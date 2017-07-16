@@ -1,0 +1,33 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+  <md-toolbar color="primary">
+    <span> Welcome to {{title}}</span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <span></span>
+  </md-toolbar>
+
+  <div class="container">
+
+      <md-grid-list cols="3" rowHeight="2:1">
+        <md-grid-tile [colspan]="2">
+            <md-input-container class="main-url">
+              <input mdInput #fetchData placeholder="Please enter URL" (keyup.enter)="onSubmit(fetchData.value)" value="http://pf.tradetracker.net/?aid=1&fid=251713&categoryType=2&additionalType=2&limit=10">
+            </md-input-container>
+        </md-grid-tile>
+        <md-grid-tile>
+            <button md-raised-button (click)="onSubmit(fetchData.value)">Submit</button>
+        </md-grid-tile>
+      </md-grid-list>
+
+
+      <ul>
+        <li *ngFor="let hero of heroes">{{hero}}</li>
+      </ul>
+
+
+       {{clickMessage}}
+  </div>
