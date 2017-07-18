@@ -1,0 +1,114 @@
+h1 {
+  color: #369;
+  font-family: 'Lato', sans-serif;
+  font-size: 250%;
+}
+
+.main-app {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-url {
+  width: 100%;
+}
+
+.spinner {
+  margin: 0 auto;
+}
+
+.product-list {
+  list-style: none;
+  // overflow: hidden;
+  margin: 0 0 0 -10px;
+  padding: 0;
+
+
+  li {
+    width: 31.9%;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    a {
+      display: block;
+      width: 100%;
+      border: 1px solid #ccc;
+      white-space: normal;
+      text-align: left;
+       border-top: 3px solid #3f51b5;
+       -webkit-transition: transform .1s ease-in-out,
+       box-shadow .2s ease-in-out;
+       transition: transform .1s ease-in-out,
+       box-shadow .2s ease-in-out;
+       -webkit-font-smoothing: antialiased;
+       overflow: hidden;
+       height: 471px;
+        background-color: #fff;
+
+
+
+        &:hover {
+          border-top: 5px solid #3f51b5;
+
+           background-color: #fff;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          transform: translateY(-10px) translateZ(0) scale(1, 1);
+          -webkit-transform: translateY(-10px) translateZ(0) scale(1, 1);
+        }
+
+
+
+      .img-wrap {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        text-align: center;
+        margin-top: 22px;
+
+        img {
+          max-height: 200px;
+          max-width: 100%;
+        }
+
+      }
+
+
+
+      .mat-card-header-text {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      h2 {
+            font-size: 18px;
+            line-height: 22px;
+            height: 85px;
+            overflow: hidden;
+
+
+      }
+
+
+    }
+
+  }
+
+  // For mobile
+  @media (max-width: 767px) {
+    margin: 0;
+    padding: 0;
+    li {
+      float: none;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+
+}
+

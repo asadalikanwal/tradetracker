@@ -2,7 +2,7 @@
 
 
   <md-toolbar color="primary">
-    <span> Welcome to {{title}}</span>
+     <span>{{title}}</span>
 
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
@@ -13,21 +13,41 @@
   <div class="container">
 
       <md-grid-list cols="3" rowHeight="2:1">
-        <md-grid-tile [colspan]="2">
+        <md-grid-tile [colspan]="2" class="md-grid-search">
             <md-input-container class="main-url">
               <input mdInput #fetchData placeholder="Please enter URL" (keyup.enter)="onSubmit(fetchData.value)" value="http://pf.tradetracker.net/?aid=1&fid=251713&categoryType=2&additionalType=2&limit=10">
             </md-input-container>
         </md-grid-tile>
-        <md-grid-tile>
+        <md-grid-tile class="md-grid-btn">
             <button md-raised-button (click)="onSubmit(fetchData.value)">Submit</button>
         </md-grid-tile>
       </md-grid-list>
 
+      <div layout="row" layout-sm="column" layout-align="space-around" *ngIf="loader">
+        <md-spinner class="spinner"></md-spinner>
+      </div>
 
-      <ul>
-        <li *ngFor="let hero of heroes">{{hero}}</li>
+
+      <ul class="product-list">
+          <li *ngFor="let product of productlist">
+            <a md-button href="{{product.productURL}}">
+
+              <div class="img-wrap">
+                <img src="{{product.imageURL}}">
+              </div>
+
+                <h2>{{product.name}}</h2>
+                <div>
+                  <md-chip-list>
+                    <md-chip color="primary" selected="true">{{product.categories.category}}</md-chip>
+                  </md-chip-list>
+                </div>
+                <p>
+                  <strong>Product Id:</strong> {{product.productID}}<br>
+                  <strong>Price</strong> {{product.price}}
+                </p>
+
+            </a>
+        </li>
       </ul>
-
-
-       {{clickMessage}}
   </div>

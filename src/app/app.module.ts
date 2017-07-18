@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// Import HttpClientModule from @angular/common/http
-import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdInputModule, MdToolbarModule, MdGridListModule } from '@angular/material';
-
+import { MdButtonModule, MdCheckboxModule, MdInputModule, MdToolbarModule, MdGridListModule, MdProgressSpinnerModule, MdCardModule, MdChipsModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
+import { ServerService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -15,16 +14,18 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    HttpClientXsrfModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdCheckboxModule,
     MdInputModule,
     MdToolbarModule,
-    MdGridListModule
+    MdGridListModule,
+    MdProgressSpinnerModule,
+    MdCardModule,
+    MdChipsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

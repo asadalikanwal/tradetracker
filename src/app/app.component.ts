@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientXsrfModule, HttpHeaders } from '@angular/common/http';
-// import { MdButtonModule, MdCheckboxModule, MdInputModule, MdToolbarModule, MdGridListModule } from '@angular/material';
+// import { Http, Response, RequestOptions, URLSearchParams } from '@angular/http';
 
+import { ServerService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,33 +9,26 @@ import { HttpClient, HttpClientXsrfModule, HttpHeaders } from '@angular/common/h
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = '1st Assignment';
-  clickMessage = '';
-  fetchUrl = '';
-  results = '';
-  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+  title = 'Trade Tracker';
+  productlist = [];
+  loader = false;
 
-  constructor(private http: HttpClient) { }
-
-
-
+  constructor(private serverService: ServerService) { }
   onSubmit(fetchData: string) {
-    if (fetchData) {
-      // fetchData = '/assets/productfeed.xml';
-      this.http.post(fetchData, {
-        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
-      }).subscribe(data => {
-        // Read the result field from the JSON response.
-        // this.results = JSON.parse(data['results']);
-        // this.results = data['results'];
-        console.log(data['results'].products.product[0].productID);
-      }, err => {
-        console.log('Something went wrong again!');
-        // this.results = '';
-      });
-      // this.heroes.push(this.results);
-    }
+    this.loader = true;
+    this.serverService.getServers(fetchData)
+      .subscribe(
+
+          data => {
+            this.productlist = data.product;
+            this.loader = false;
+          },
+
+          (error) => {
+              this.loader = false;
+              console.log("error", error)
+            }
+      );
+
   }
-
-
 }
