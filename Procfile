@@ -1,1 +1,1 @@
-web: ng serve --open
+web: ng serve
